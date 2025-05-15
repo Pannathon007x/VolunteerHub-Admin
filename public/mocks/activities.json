@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1",
+        "name": "อบรมเชิงปฏิบัติการ",
+        "description": "Neque porro quisquam est…",
+        "type": "อบรม",
+        "startDate": "2025-06-01T08:30",
+        "endDate": "2025-06-01T12:00",
+        "maxParticipants": 50
+    },
+    {
+        "id": "2",
+        "name": "กิจกรรมอาสา",
+        "description": "Lorem ipsum dolor sit amet…",
+        "type": "อาสา",
+        "startDate": "2025-07-05T09:00",
+        "endDate": "2025-07-05T11:00",
+        "maxParticipants": 30
+    },
+    {
+        "id": "3",
+        "name": "การประชุมเชิงปฏิบัติการ",
+        "description": "Consectetur adipiscing elit…",
+        "type": "อาสา",
+        "startDate": "2025-08-10T13:00",
+        "endDate": "2025-08-10T15:00",
+        "maxParticipants": 20
+    },
+    {
+        "id": "4",
+        "name": "การสัมมนา",
+        "description": "Sed do eiusmod tempor incididunt…",
+        "type": "อบรม",
+        "startDate": "2025-09-15T10:00",
+        "endDate": "2025-09-15T12:00",
+        "maxParticipants": 100
+    }
+]
