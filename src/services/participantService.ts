@@ -1,4 +1,3 @@
-// src/services/participantService.ts
 import api from "../utils/api";
 import type { AxiosResponse } from "axios";
 

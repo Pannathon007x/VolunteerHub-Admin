@@ -1,6 +1,6 @@
-// src/services/activityService.ts
 import api from "../utils/api";
 import type { AxiosResponse } from "axios";
+
 
 export interface ActivityPayload {
   name: string;
@@ -70,3 +70,18 @@ export function rejectActivity(
 }
 
 
+export function fetchMyActivities(): Promise<Activity[]> {
+  // mock data
+  return Promise.resolve([
+    {
+      id: "a1",
+      name: "กิจกรรมปลูกต้นไม้",
+      description: "ช่วยกันปลูกต้นไม้ในชุมชน",
+      type: "อาสา",
+      startDate: "2025-06-10T08:30",
+      endDate:   "2025-06-10T12:00",
+      maxParticipants: 50,
+    },
+    // … เพิ่ม mock ตามต้องการ
+  ]);
+}

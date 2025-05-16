@@ -19,6 +19,10 @@ export default function Navbar() {
                 <Link to="/" className="text-gray-700 hover:text-gray-900">
                     หน้าหลัก
                 </Link>
+                <Link to="/register" className="text-blue-600 hover:underline">
+                    ลงทะเบียน
+                </Link>
+
                 <Link to="/activities" className="text-gray-700 hover:text-gray-900">
                     พร้อมข้อมูล
                 </Link>
@@ -26,11 +30,20 @@ export default function Navbar() {
                     สร้างกิจกรรมใหม่
                 </Link>
                 <Link to="/activities/edit" className="text-gray-700 hover:text-gray-900">
+                    ข้อมูลกิจกรรม
+                </Link>
+                <Link to="/activities/:id/edit" className="text-gray-700 hover:text-gray-900">
                     แก้ไขข้อมูลกิจกรรม
                 </Link>
                 <Link to="/activities/:id/approve" className="text-gray-700 hover:text-gray-900">
                     อนุมัติ
                 </Link>
+                <Link to="/activities/approved" className="text-gray-700 hover:text-gray-900">
+                    รายการอนุมัติ
+                </Link>
+                <Link to="/my-activities" className="text-gray-700 hover:text-gray-900">กิจกรรมของฉัน</Link>
+                <Link to="/history">ประวัติกิจกรรม</Link>
+
                 {/* <Link to={`/activities/${a.id}/close`} className="text-red-500">
                     ปิดกิจกรรม
                 </Link> */}

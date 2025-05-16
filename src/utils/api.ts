@@ -1,15 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:4000",
+  baseURL: "http://localhost:4000",       // เปลี่ยนเป็น URL ของ Backend คุณ
   headers: { "Content-Type": "application/json" },
-});
-
-// ตัวอย่าง interceptor สำหรับใส่ token
-api.interceptors.request.use(config => {
-  const token = localStorage.getItem("token");
-  if (token) config.headers.Authorization = `Bearer ${token}`;
-  return config;
 });
 
 export default api;

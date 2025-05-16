@@ -1,80 +1,98 @@
 // src/pages/EditActivities.tsx
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { fetchActivities, type Activity } from "../services/activityService";
 
-// แมปสีบาร์ซ้ายตามประเภท
-const TYPE_COLORS: Record<Activity["type"], string> = {
-    อาสา: "bg-pink-300",
-    ช่วยงาน: "bg-green-200",
-    อบรม: "bg-green-200",
+type ActivityCard = {
+  id: string;
+  type: "อบรม" | "อาสา";
+  name: string;
+  desc: string;
+  startDate: string;
+  endDate: string;
 };
 
+const TYPE_COLORS: Record<ActivityCard["type"], string> = {
+  อบรม: "bg-green-200",
+  อาสา: "bg-pink-300",
+};
+
+const mockActivities: ActivityCard[] = [
+  {
+    id: "1",
+    type: "อบรม",
+    name: "Lorem Ipsum",
+    desc: "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet...",
+    startDate: "6/1/2025",
+    endDate: "6/1/2025",
+  },
+  {
+    id: "2",
+    type: "อบรม",
+    name: "Lorem Ipsum",
+    desc: "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet...",
+    startDate: "7/1/2025",
+    endDate: "7/1/2025",
+  },
+  {
+    id: "3",
+    type: "อาสา",
+    name: "Lorem Ipsum",
+    desc: "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet...",
+    startDate: "8/10/2025",
+    endDate: "8/10/2025",
+  },
+  {
+    id: "4",
+    type: "อบรม",
+    name: "Lorem Ipsum",
+    desc: "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet...",
+    startDate: "9/15/2025",
+    endDate: "9/15/2025",
+  },
+];
+
 export default function EditActivities() {
-    const [activities, setActivities] = useState<Activity[]>([]);
-    const [loading, setLoading] = useState(true);
+  return (
+    <div className="min-h-screen bg-gray-100">
+      {/* Header Back + Title */}
+      <div className="bg-orange-200 py-4 px-6 flex items-center space-x-3 shadow">
+        <Link to="/activities" className="text-2xl">
+          ←
+        </Link>
+        <h1 className="text-2xl font-bold">แก้ไขข้อมูลกิจกรรม</h1>
+      </div>
 
-    useEffect(() => {
-        fetchActivities()
-            .then(list => setActivities(list))
-            .finally(() => setLoading(false));
-    }, []);
-
-    if (loading) {
-        return <div className="p-4">กำลังโหลดกิจกรรม...</div>;
-    }
-
-    return (
-        <div className="min-h-screen bg-gray-100">
-            {/* Navbar จะอยู่ด้านบน */}
-
-            {/* Header เบื้องต้น */}
-            <div className="bg-orange-200 py-4 px-6 mb-4 shadow">
-                <Link to="/activities/edit" className="text-2xl mr-4">←</Link>
-                <span className="text-2xl font-bold">แก้ไขข้อมูลกิจกรรม</span>
+      {/* List of cards */}
+      <div className="px-6 py-4 space-y-4">
+        {mockActivities.map((a) => (
+          <div
+            key={a.id}
+            className="flex overflow-hidden rounded-xl shadow bg-white"
+          >
+            {/* แถบสีฝั่งซ้าย */}
+            <div
+              className={`${TYPE_COLORS[a.type]} w-40 flex items-center justify-center`}
+            >
+              <span className="text-lg font-bold">{a.type}</span>
             </div>
 
-            <div className="px-6 space-y-4">
-                {activities.map((a, idx) => (
-                    <div
-                        key={a.id}
-                        className="flex overflow-hidden rounded-lg shadow-lg bg-gray-200"
-                    >
-                        {/* แถบสีฝั่งซ้าย */}
-                        <div
-                            className={`${TYPE_COLORS[a.type]} w-48 flex items-center justify-center`}
-                        >
-                            <span className="text-xl font-bold">{a.type}</span>
-                        </div>
-
-                        {/* เนื้อหา */}
-                        <div className="flex-1 p-6">
-                            <h2 className="text-2xl font-semibold mb-2">{a.name}</h2>
-                            <p className="italic text-gray-700 mb-4">"{a.description}"</p>
-                            <p className="text-red-600 mb-2">
-                                วันที่ {new Date(a.startDate).toLocaleDateString()} –{" "}
-                                {new Date(a.endDate).toLocaleDateString()}
-                            </p>
-                        </div>
-
-                        {/* ปุ่ม */}
-                        <div className="flex items-center pr-6">
-                            {idx === 0 ? (
-                                <button className="bg-gray-700 text-white px-4 py-2 rounded-full">
-                                    ยกเลิก
-                                </button>
-                            ) : (
-                                <Link
-                                    to={`/activities/${a.id}/edit`}
-                                    className="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-full transition"
-                                >
-                                    แก้ไข
-                                </Link>
-                            )}
-                        </div>
-                    </div>
-                ))}
+            {/* เนื้อหา */}
+            <div className="flex-1 p-6">
+              <h2 className="text-xl font-semibold mb-1">{a.name}</h2>
+              <p className="italic text-gray-700 mb-2">{a.desc}</p>
+              <p className="text-red-600">
+                วันที่ {a.startDate} – {a.endDate}
+              </p>
             </div>
-        </div>
-    );
+
+            {/* ปุ่มแก้ไข */}
+            <div className="flex items-center pr-6">
+              <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full transition">
+                แก้ไข
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }

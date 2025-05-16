@@ -7,12 +7,18 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      
       <Navbar />
-      {/* ตรงนี้จะเรนเดอร์หน้าเพจตามเส้นทาง */}
+
+      
       <div className="flex-1">
         {element}
       </div>
-      {/* <Footer /> ถ้ามี */}
+
+      
+      <footer className="bg-gray-100 py-4 text-center text-gray-600">
+        © 2025 VolunteerHub
+      </footer>
     </div>
   );
 }

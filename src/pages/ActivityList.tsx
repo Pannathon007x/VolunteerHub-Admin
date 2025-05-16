@@ -8,7 +8,7 @@ export default function ActivityList() {
 
     useEffect(() => {
         fetchActivities()
-            .then(res => setActivities(res.data))
+            .then(res => setActivities(res))
             .finally(() => setLoading(false));
     }, []);
 
