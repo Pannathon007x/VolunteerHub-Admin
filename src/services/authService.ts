@@ -3,6 +3,7 @@ import api from "../utils/api";
 import type { AxiosResponse } from "axios";
 
 
+
 export interface RegisterPayload {
   student_id: string;
   password: string;
@@ -14,9 +15,10 @@ export interface RegisterPayload {
 }
 
 export interface LoginPayload {
-  student_id: string;
+  email: string;
   password: string;
 }
+
 
 // สมมติว่าฝั่ง Backend จะคืนแบบนี้
 export interface AuthResponse {
@@ -33,8 +35,9 @@ export function register(
 }
 
 // POST /login
-export function login(
+export function loginStudent(
   data: LoginPayload
 ): Promise<AxiosResponse<AuthResponse>> {
-  return api.post<AuthResponse>("/login", data);
+  // เรียกไป /auth/login-student ตามที่ backend กำหนด
+  return api.post<AuthResponse>("/loginstudent", data);
 }
