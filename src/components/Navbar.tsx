@@ -19,8 +19,8 @@ export default function Navbar() {
                 <Link to="/" className="text-gray-700 hover:text-gray-900">
                     หน้าหลัก
                 </Link>
-                <Link to="/register" className="text-blue-600 hover:underline">
-                    ลงทะเบียน
+                <Link to="/login" className="text-blue-600 hover:underline">
+                    ล็อกอิน
                 </Link>
 
                 <Link to="/activities" className="text-gray-700 hover:text-gray-900">
